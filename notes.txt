@@ -1,10 +1,9 @@
 
-Different icon packs attached - choose one and remove the rest from the icons folder.
-
 degree symbol - &deg
 
-font-family: 'Maven Pro', sans-serif;
+add a dark mode button - amend README after adding dark mode feature.
 
-make app change to dark mode in evening (or with sunlight hours?)
 
-Amend README after adding dark mode feature.
+*remember to set notification display to block when error message (it's set to 'none' in CSS)
+
+remove dummy text from html before beginning JS (including img tag)
