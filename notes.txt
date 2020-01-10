@@ -1,2 +1,8 @@
 
 Different icon packs attached - choose one and remove the rest from the icons folder.
+
+degree symbol - &deg
+
+font-family: 'Maven Pro', sans-serif;
+
+make app change to dark mode in evening (or with sunlight hours?)
