@@ -68,10 +68,11 @@ h1 {
 #description {
   font-size: 1.4rem;
   margin-bottom: 10px;
+  text-transform: capitalize;
 }
 
 #location {
-  font-size: 0.9rem;
+  font-size: 0.8rem;
 }
 
 /* DARK MODE BUTTON */

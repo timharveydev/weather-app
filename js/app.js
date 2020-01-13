@@ -28,29 +28,37 @@ function getError(error) {
   notificationElement.innerHTML = error.message;
 }
 
-// GET COORDINATES - FETCH API DATA - INPUT INTO WEATHER OBJECT
+// GET USER'S COORDINATES
 function getPosition(position) {
   const latitude = position.coords.latitude;
   const longitude = position.coords.longitude;
+
+  getData(latitude, longitude);
+}
   
-  // API provides units in celsius so no kelvin conversion required
-  const api = `api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${apiKey}`;
+// FETCH API DATA & ASSIGN TO WEATHER OBJECT
+function getData(latitude, longitude) {
+  // API outputs metric units - no Kelvin conversion required
+  const api = `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${apiKey}`;
 
-  fetch(api).then((response) => {
-    response.json().then((parsedJson) => {
-      weather.temperature.value = parsedJson.main.temp;
-      weather.iconId = parsedJson.weather[0].icon;
-      weather.description = parsedJson.weather[0].description;
-      weather.city = parsedJson.name;
-      weather.country = parsedJson.sys.country;
+  fetch(api)
+    .then((response) => {
+      const data = response.json();
+      return data;
+    })  
+    .then((data) => {
+      weather.temperature.value = Math.floor(data.main.temp);
+      weather.iconId = data.weather[0].icon;
+      weather.description = data.weather[0].description;
+      weather.city = data.name;
+      weather.country = data.sys.country;
 
-      assignWeather();
+      displayWeather();
     })
-  })
 }
 
-// ASSIGN WEATHER OBJECT DATA TO HTML
-function assignWeather() {
+// DISPLAY WEATHER DATA IN HTML
+function displayWeather() {
   // 'iconFolder' is declared in dark-mode.js
   iconElement.innerHTML = `<img src="${iconFolder}/${weather.iconId}.png" alt="#">`;
   temperatureElement.innerHTML = `${weather.temperature.value}&deg<span>C</span>`;
