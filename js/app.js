@@ -39,7 +39,7 @@ function getPosition(position) {
 // FETCH API DATA & ASSIGN TO WEATHER OBJECT
 function getData(latitude, longitude) {
   // API outputs metric units - no Kelvin conversion required
-  const api = `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${apiKey}`;
+  const api = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${apiKey}`;
 
   fetch(api)
     .then((response) => {
