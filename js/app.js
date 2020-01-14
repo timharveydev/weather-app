@@ -18,8 +18,8 @@ weather.temperature = {
 if (navigator.geolocation)
   navigator.geolocation.getCurrentPosition(getPosition, getError);
 else {
-    notificationElement.style.display = 'block';
-    notificationElement.innerHTML = 'Geolocation not supported';
+  notificationElement.style.display = 'block';
+  notificationElement.innerHTML = 'Geolocation not supported';
 }
 
 // IF GEOLOCATION RETURNS AN ERROR
@@ -80,7 +80,8 @@ temperatureElement.addEventListener('click', () => {
     weather.temperature.unit = 'fahrenheit';
     const fahrenheit = Math.floor(celsiusToFahrenheit(weather.temperature.value));
     temperatureElement.innerHTML = `${fahrenheit}&deg<span>F</span>`;
-  } else {
+  }
+  else {
     weather.temperature.unit = 'celsius';
     temperatureElement.innerHTML = `${weather.temperature.value}&deg<span>C</span>`;
   }
