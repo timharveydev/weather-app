@@ -65,3 +65,24 @@ function displayWeather() {
   descriptionElement.innerHTML = weather.description;
   locationElement.innerHTML = `${weather.city}, ${weather.country}`;
 }
+
+// CELSIUS TO FAHRENHEIT CONVERSION
+const celsiusToFahrenheit = (celsius) => {
+  const fahrenheit = (celsius * 9/5) + 32;
+  return fahrenheit;
+}
+
+// CONVERT C TO F ON CLICK
+temperatureElement.addEventListener('click', () => {
+  if (weather.temperature.value == undefined)
+    return;
+
+  if (weather.temperature.unit == 'celsius') {
+    weather.temperature.unit = 'fahrenheit';
+    const fahrenheit = Math.floor(celsiusToFahrenheit(weather.temperature.value));
+    temperatureElement.innerHTML = `${fahrenheit}&deg<span>F</span>`;
+  } else {
+    weather.temperature.unit = 'celsius';
+    temperatureElement.innerHTML = `${weather.temperature.value}&deg<span>C</span>`;
+  }
+})
