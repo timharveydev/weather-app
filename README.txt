@@ -2,4 +2,4 @@ A simple Javascript weather app. I made it so that I could practise working with
 
 The app uses the user's geolocation to determine the local weather, and the unit of measurement can be changed from Celsius to Fahrenheit by clicking on the temperature.
 
-I intend to add a dark mode feature in the future.
+I have also included a dark mode button which darkens the background, lightens the text and uses a lighter icon set.

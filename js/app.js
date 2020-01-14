@@ -59,8 +59,7 @@ function getData(latitude, longitude) {
 
 // DISPLAY WEATHER DATA IN HTML
 function displayWeather() {
-  // 'iconFolder' is declared in dark-mode.js
-  iconElement.innerHTML = `<img src="${iconFolder}/${weather.iconId}.png" alt="#">`;
+  iconElement.innerHTML = `<img src="icons/black/${weather.iconId}.png" alt="#">`;
   temperatureElement.innerHTML = `${weather.temperature.value}&deg<span>C</span>`;
   descriptionElement.innerHTML = weather.description;
   locationElement.innerHTML = `${weather.city}, ${weather.country}`;
@@ -85,4 +84,4 @@ temperatureElement.addEventListener('click', () => {
     weather.temperature.unit = 'celsius';
     temperatureElement.innerHTML = `${weather.temperature.value}&deg<span>C</span>`;
   }
-})
+});
