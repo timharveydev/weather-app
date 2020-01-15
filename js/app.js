@@ -5,8 +5,6 @@ const temperatureElement = document.getElementById('temperature');
 const descriptionElement = document.getElementById('description');
 const locationElement = document.getElementById('location');
 
-const apiKey = '4dac283c5c68fb0e9546999d2a6c29e6';
-
 // APP DATA
 const weather = {};
 
@@ -16,35 +14,26 @@ weather.temperature = {
 
 // CHECK GEOLOCATION IS AVAILABLE
 if (navigator.geolocation)
-  navigator.geolocation.getCurrentPosition(getPosition, getError);
+  navigator.geolocation.getCurrentPosition(getData, showError);
 else {
   notificationElement.style.display = 'block';
   notificationElement.innerHTML = 'Geolocation not supported';
 }
 
 // IF GEOLOCATION RETURNS AN ERROR
-function getError(error) {
+function showError(error) {
   notificationElement.style.display = 'block';
   notificationElement.innerHTML = error.message;
 }
-
-// GET USER'S COORDINATES
-function getPosition(position) {
-  const latitude = position.coords.latitude;
-  const longitude = position.coords.longitude;
-
-  getData(latitude, longitude);
-}
   
-// FETCH API DATA & ASSIGN TO WEATHER OBJECT
-function getData(latitude, longitude) {
+// FETCH API DATA WITH USER'S COORDINATES & ASSIGN DATA TO WEATHER OBJECT
+function getData(currentPosition) {
   // API outputs metric units - no Kelvin conversion required
-  const api = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${apiKey}`;
+  const api = `https://api.openweathermap.org/data/2.5/weather?lat=${currentPosition.coords.latitude}&lon=${currentPosition.coords.longitude}&units=metric&appid=4dac283c5c68fb0e9546999d2a6c29e6`;
 
   fetch(api)
     .then((response) => {
-      const data = response.json();
-      return data;
+      return response.json();
     })  
     .then((data) => {
       weather.temperature.value = Math.floor(data.main.temp);
@@ -67,8 +56,7 @@ function displayWeather() {
 
 // CELSIUS TO FAHRENHEIT CONVERSION
 const celsiusToFahrenheit = (celsius) => {
-  const fahrenheit = (celsius * 9/5) + 32;
-  return fahrenheit;
+  return (celsius * 9/5) + 32;
 }
 
 // CONVERT C TO F ON CLICK

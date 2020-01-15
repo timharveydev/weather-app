@@ -6,7 +6,6 @@
 }
 
 /* GLOBAL */
-
 body {
   width: 100vw;
   height: 100vh;
@@ -48,7 +47,6 @@ h1 {
 }
 
 /* WEATHER INFO */
-
 #icon img {
   width: 200px;
 }
